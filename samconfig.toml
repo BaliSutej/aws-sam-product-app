@@ -6,7 +6,7 @@ stack_name = "product-sam-app-svb"
 s3_bucket = "aws-sam-cli-managed-default-samclisourcebucket-hj7gkqg64tea"
 s3_prefix = "product-sam-app-svb"
 region = "us-east-1"
-confirm_changeset = true
+confirm_changeset = flase
 capabilities = "CAPABILITY_IAM"
 image_repositories = []
 parameter_overrides = "EnvironmentType=\"test\""
