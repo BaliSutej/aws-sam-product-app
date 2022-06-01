@@ -72,7 +72,7 @@ Resources:
                     - !Ref EnvironmentType
                     - '-svb'
       Handler: app.lambdaHandler
-      Runtime: nodejs16.x 
+      Runtime: nodejs14.x 
       Policies:
         - DynamoDBCrudPolicy:
             TableName: !Ref userDynamoDBTable
@@ -96,7 +96,7 @@ Resources:
     Type: 'AWS::Serverless::Function'
     Properties:
       Handler: app.lambdaHandler
-      Runtime: nodejs16.x
+      Runtime: nodejs14.x
       CodeUri: ./user/
       FunctionName: !Join
                   - ''
@@ -122,7 +122,7 @@ Resources:
     Type: 'AWS::Serverless::Function'
     Properties:
       Handler: app.lambdaHandler
-      Runtime: nodejs16.x
+      Runtime: nodejs14.x
       FunctionName: !Join
                   - ''
                   - - 'productServiceFunction-'
