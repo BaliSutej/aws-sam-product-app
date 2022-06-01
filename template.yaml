@@ -1,0 +1,159 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: >
+  product-sam-app-svb
+
+  Sample SAM Template for product-sam-app-svb
+  
+Globals:
+  Function:
+    Timeout: 30
+
+Parameters: 
+    EnvironmentType: 
+      Description: The environment type
+      Type: String
+      Default: test
+      AllowedValues: 
+        - prod
+        - test
+      ConstraintDescription: must be a prod or test
+
+
+
+Resources: 
+  productDynamoDBTable: 
+    Type: AWS::DynamoDB::Table
+    Properties: 
+      AttributeDefinitions: 
+        - 
+          AttributeName: "ProductID"
+          AttributeType: "S"
+      KeySchema: 
+        - 
+          AttributeName: "ProductID"
+          KeyType: "HASH"  
+      ProvisionedThroughput: 
+        ReadCapacityUnits: "5"
+        WriteCapacityUnits: "5"
+      TableName: !Join
+                  - ''
+                  - - 'producttable-'
+                    - !Ref EnvironmentType
+                    - '-svb'
+      
+  userDynamoDBTable: 
+    Type: AWS::DynamoDB::Table
+    Properties: 
+      AttributeDefinitions: 
+        - 
+          AttributeName: "userID"
+          AttributeType: "S"
+      KeySchema: 
+        - 
+          AttributeName: "userID"
+          KeyType: "HASH"  
+      ProvisionedThroughput: 
+        ReadCapacityUnits: "5"
+        WriteCapacityUnits: "5"
+      TableName: !Join
+                  - ''
+                  - - 'usertable-'
+                    - !Ref EnvironmentType
+                    - '-svb'
+
+  authFunction:
+    Type: AWS::Serverless::Function
+    Properties: 
+      CodeUri: ./authorizer/
+      FunctionName: !Join
+                  - ''
+                  - - 'authFunction-'
+                    - !Ref EnvironmentType
+                    - '-svb'
+      Handler: app.lambdaHandler
+      Runtime: nodejs16.x 
+      Policies:
+        - DynamoDBCrudPolicy:
+            TableName: !Ref userDynamoDBTable
+
+  productApi:
+    Type: AWS::Serverless::Api
+    Properties:
+      StageName: !Ref EnvironmentType
+      Auth:
+        DefaultAuthorizer: LambdaRequestAuthorizer
+        Authorizers:
+          LambdaRequestAuthorizer:
+            FunctionPayloadType: REQUEST
+            FunctionArn: !GetAtt authFunction.Arn
+            Identity:
+             Headers:
+              - authorizationToken
+             ReauthorizeEvery: 0
+
+  userServiceFunction:
+    Type: 'AWS::Serverless::Function'
+    Properties:
+      Handler: app.lambdaHandler
+      Runtime: nodejs16.x
+      CodeUri: ./user/
+      FunctionName: !Join
+                  - ''
+                  - - 'userServiceFunction-'
+                    - !Ref EnvironmentType
+                    - '-svb'
+      Policies:
+        - DynamoDBCrudPolicy:
+            TableName: !Ref userDynamoDBTable
+      Events:
+        userRegisterAPI:
+          Type: Api
+          Properties:
+            Path: /user/register
+            Method: POST
+        userLoginAPI:
+          Type: Api
+          Properties:
+            Path: /user/login
+            Method: POST
+
+  productServiceFunction:
+    Type: 'AWS::Serverless::Function'
+    Properties:
+      Handler: app.lambdaHandler
+      Runtime: nodejs16.x
+      FunctionName: !Join
+                  - ''
+                  - - 'productServiceFunction-'
+                    - !Ref EnvironmentType
+                    - '-svb'
+      CodeUri: ./product/
+      Policies:
+        - DynamoDBCrudPolicy:
+            TableName: !Ref productDynamoDBTable
+      Events:
+        getProductAPI:
+          Type: Api
+          Properties:
+            RestApiId: !Ref productApi
+            Path: /product
+            Method: GET
+        addProductAPI:
+          Type: Api
+          Properties:
+            RestApiId: !Ref productApi
+            Path: /product
+            Method: POST
+        updateProductAPI:
+          Type: Api
+          Properties:
+            RestApiId: !Ref productApi
+            Path: /product
+            Method: PUT
+        deleteProductAPI:
+          Type: Api
+          Properties:
+            RestApiId: !Ref productApi
+            Path: /product
+            Method: DELETE

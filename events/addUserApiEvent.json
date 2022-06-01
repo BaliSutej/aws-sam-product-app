@@ -1,0 +1,121 @@
+{
+    "resource": "/user/register",
+    "path": "/user/register",
+    "httpMethod": "POST",
+    "headers": {
+        "Accept": "*/*",
+        "Accept-Encoding": "gzip, deflate, br",
+        "authorizationToken": "abc123",
+        "CloudFront-Forwarded-Proto": "https",
+        "CloudFront-Is-Desktop-Viewer": "true",
+        "CloudFront-Is-Mobile-Viewer": "false",
+        "CloudFront-Is-SmartTV-Viewer": "false",
+        "CloudFront-Is-Tablet-Viewer": "false",
+        "CloudFront-Viewer-Country": "IN",
+        "Content-Type": "application/json",
+        "Host": "k3ag79busa.execute-api.us-east-1.amazonaws.com",
+        "Postman-Token": "a008426c-ad21-4f93-a0ed-ae630e352f68",
+        "User-Agent": "PostmanRuntime/7.29.0",
+        "Via": "1.1 90a53dbf74de33635dc01ae4f6b3e736.cloudfront.net (CloudFront)",
+        "X-Amz-Cf-Id": "5WBoSpIgosFTAJ26LBRPg8JwLXT7WvySJoyXEsjX9a5RWhRSW5cSNA==",
+        "X-Amzn-Trace-Id": "Root=1-6294714a-7988c3616e62f3be194a7059",
+        "X-Forwarded-For": "106.51.64.35, 64.252.145.135",
+        "X-Forwarded-Port": "443",
+        "X-Forwarded-Proto": "https"
+    },
+    "multiValueHeaders": {
+        "Accept": [
+            "*/*"
+        ],
+        "Accept-Encoding": [
+            "gzip, deflate, br"
+        ],
+        "authorizationToken": [
+            "abc123"
+        ],
+        "CloudFront-Forwarded-Proto": [
+            "https"
+        ],
+        "CloudFront-Is-Desktop-Viewer": [
+            "true"
+        ],
+        "CloudFront-Is-Mobile-Viewer": [
+            "false"
+        ],
+        "CloudFront-Is-SmartTV-Viewer": [
+            "false"
+        ],
+        "CloudFront-Is-Tablet-Viewer": [
+            "false"
+        ],
+        "CloudFront-Viewer-Country": [
+            "IN"
+        ],
+        "Content-Type": [
+            "application/json"
+        ],
+        "Host": [
+            "k3ag79busa.execute-api.us-east-1.amazonaws.com"
+        ],
+        "Postman-Token": [
+            "a008426c-ad21-4f93-a0ed-ae630e352f68"
+        ],
+        "User-Agent": [
+            "PostmanRuntime/7.29.0"
+        ],
+        "Via": [
+            "1.1 90a53dbf74de33635dc01ae4f6b3e736.cloudfront.net (CloudFront)"
+        ],
+        "X-Amz-Cf-Id": [
+            "5WBoSpIgosFTAJ26LBRPg8JwLXT7WvySJoyXEsjX9a5RWhRSW5cSNA=="
+        ],
+        "X-Amzn-Trace-Id": [
+            "Root=1-6294714a-7988c3616e62f3be194a7059"
+        ],
+        "X-Forwarded-For": [
+            "106.51.64.35, 64.252.145.135"
+        ],
+        "X-Forwarded-Port": [
+            "443"
+        ],
+        "X-Forwarded-Proto": [
+            "https"
+        ]
+    },
+    "queryStringParameters": null,
+    "multiValueQueryStringParameters": null,
+    "pathParameters": null,
+    "stageVariables": null,
+    "requestContext": {
+        "resourceId": "h1byom",
+        "resourcePath": "/user/register",
+        "httpMethod": "POST",
+        "extendedRequestId": "S7ajnFBjoAMFfKQ=",
+        "requestTime": "30/May/2022:07:24:58 +0000",
+        "path": "/Prod/user/register",
+        "accountId": "960351580303",
+        "protocol": "HTTP/1.1",
+        "stage": "Prod",
+        "domainPrefix": "k3ag79busa",
+        "requestTimeEpoch": 1653895498170,
+        "requestId": "35fc6329-d68a-4c4f-b468-4ecb3f127e05",
+        "identity": {
+            "cognitoIdentityPoolId": null,
+            "accountId": null,
+            "cognitoIdentityId": null,
+            "caller": null,
+            "sourceIp": "106.51.64.35",
+            "principalOrgId": null,
+            "accessKey": null,
+            "cognitoAuthenticationType": null,
+            "cognitoAuthenticationProvider": null,
+            "userArn": null,
+            "userAgent": "PostmanRuntime/7.29.0",
+            "user": null
+        },
+        "domainName": "k3ag79busa.execute-api.us-east-1.amazonaws.com",
+        "apiId": "k3ag79busa"
+    },
+    "body": "{\n    \"userId\": \"svb@gmail.com\",\n    \"name\": \"sutej\",\n    \"password\": \"svb@gmail.com\"\n}",
+    "isBase64Encoded": false
+}

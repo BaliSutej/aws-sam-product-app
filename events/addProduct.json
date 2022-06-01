@@ -1,0 +1,125 @@
+{
+    "resource": "/product",
+    "path": "/product",
+    "httpMethod": "POST",
+    "headers": {
+        "Accept": "*/*",
+        "Accept-Encoding": "gzip, deflate, br",
+        "authorizationToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJzdmJAZ21haWwuY29tIiwiaWF0IjoxNjUzOTA5MzA5fQ.qVqcfQNi42ivS24nNNaZn5i1SFYJTtPZFMme1p4v_XU",
+        "CloudFront-Forwarded-Proto": "https",
+        "CloudFront-Is-Desktop-Viewer": "true",
+        "CloudFront-Is-Mobile-Viewer": "false",
+        "CloudFront-Is-SmartTV-Viewer": "false",
+        "CloudFront-Is-Tablet-Viewer": "false",
+        "CloudFront-Viewer-Country": "IN",
+        "Content-Type": "application/json",
+        "Host": "uqhejh0xd7.execute-api.us-east-1.amazonaws.com",
+        "Postman-Token": "9e638115-3c00-42d2-816f-c4401b88cb1e",
+        "User-Agent": "PostmanRuntime/7.29.0",
+        "Via": "1.1 dde6368f98943ac7405f30871d4efc40.cloudfront.net (CloudFront)",
+        "X-Amz-Cf-Id": "F3_aPgdwZhZc0sv-zMkx2MxO-xNGUChWxhZV3UWbFtAot3sW-jC0ww==",
+        "X-Amzn-Trace-Id": "Root=1-6294bf1b-2d51a4d82825cc5d6e14e51b",
+        "X-Forwarded-For": "106.51.64.35, 64.252.148.101",
+        "X-Forwarded-Port": "443",
+        "X-Forwarded-Proto": "https"
+    },
+    "multiValueHeaders": {
+        "Accept": [
+            "*/*"
+        ],
+        "Accept-Encoding": [
+            "gzip, deflate, br"
+        ],
+        "authorizationToken": [
+            "exyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJzdmJAZ21haWwuY29tIiwiaWF0IjoxNjUzOTA5MzA5fQ.qVqcfQNi42ivS24nNNaZn5i1SFYJTtPZFMme1p4v_XU"
+        ],
+        "CloudFront-Forwarded-Proto": [
+            "https"
+        ],
+        "CloudFront-Is-Desktop-Viewer": [
+            "true"
+        ],
+        "CloudFront-Is-Mobile-Viewer": [
+            "false"
+        ],
+        "CloudFront-Is-SmartTV-Viewer": [
+            "false"
+        ],
+        "CloudFront-Is-Tablet-Viewer": [
+            "false"
+        ],
+        "CloudFront-Viewer-Country": [
+            "IN"
+        ],
+        "Content-Type": [
+            "application/json"
+        ],
+        "Host": [
+            "uqhejh0xd7.execute-api.us-east-1.amazonaws.com"
+        ],
+        "Postman-Token": [
+            "9e638115-3c00-42d2-816f-c4401b88cb1e"
+        ],
+        "User-Agent": [
+            "PostmanRuntime/7.29.0"
+        ],
+        "Via": [
+            "1.1 dde6368f98943ac7405f30871d4efc40.cloudfront.net (CloudFront)"
+        ],
+        "X-Amz-Cf-Id": [
+            "F3_aPgdwZhZc0sv-zMkx2MxO-xNGUChWxhZV3UWbFtAot3sW-jC0ww=="
+        ],
+        "X-Amzn-Trace-Id": [
+            "Root=1-6294bf1b-2d51a4d82825cc5d6e14e51b"
+        ],
+        "X-Forwarded-For": [
+            "106.51.64.35, 64.252.148.101"
+        ],
+        "X-Forwarded-Port": [
+            "443"
+        ],
+        "X-Forwarded-Proto": [
+            "https"
+        ]
+    },
+    "queryStringParameters": null,
+    "multiValueQueryStringParameters": null,
+    "pathParameters": null,
+    "stageVariables": null,
+    "requestContext": {
+        "resourceId": "pc5ile",
+        "authorizer": {
+            "principalId": "user",
+            "integrationLatency": 670
+        },
+        "resourcePath": "/product",
+        "httpMethod": "POST",
+        "extendedRequestId": "S8LMYHM0oAMFunw=",
+        "requestTime": "30/May/2022:12:56:59 +0000",
+        "path": "/Prod/product",
+        "accountId": "960351580303",
+        "protocol": "HTTP/1.1",
+        "stage": "Prod",
+        "domainPrefix": "uqhejh0xd7",
+        "requestTimeEpoch": 1653915419884,
+        "requestId": "c9b8474b-1c54-4ba8-8ecc-fd879c79bc32",
+        "identity": {
+            "cognitoIdentityPoolId": null,
+            "accountId": null,
+            "cognitoIdentityId": null,
+            "caller": null,
+            "sourceIp": "106.51.64.35",
+            "principalOrgId": null,
+            "accessKey": null,
+            "cognitoAuthenticationType": null,
+            "cognitoAuthenticationProvider": null,
+            "userArn": null,
+            "userAgent": "PostmanRuntime/7.29.0",
+            "user": null
+        },
+        "domainName": "uqhejh0xd7.execute-api.us-east-1.amazonaws.com",
+        "apiId": "uqhejh0xd7"
+    },
+    "body": "{\n    \"productId\": \"prod12345\",\n    \"productName\": \"nestle munch\",\n    \"price\":\"10\",\n    \"category\":\"food\",\n    \"inventory\":\"100\" \n}",
+    "isBase64Encoded": false
+}
