@@ -100,7 +100,7 @@ Resources:
       CodeUri: ./user/
       FunctionName: !Join
                   - ''
-                  - - 'userserviceFunction-'
+                  - - 'userServiceFunction-'
                     - !Ref EnvironmentType
                     - '-svb'
       Policies:

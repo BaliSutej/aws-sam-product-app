@@ -30,7 +30,7 @@ exports.lambdaHandler = async (event, context) => {
     try {
 
         var decoded = jwt.verify(event.headers.authorizationToken, 'privateKey');
-   
+        console.log("Hey");
         const params = {
             TableName: "UserTablesvb",
             Key: {
