@@ -20,7 +20,6 @@ const addProduct = async (data) => {
 
     try {
         const data = await ddbClient.send(new PutItemCommand(params));
-        console.log(data);
         return buildResponse(200,{"message":"Product successfully added"});
     } catch (err) {
         console.error(err);
