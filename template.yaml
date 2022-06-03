@@ -92,6 +92,11 @@ Resources:
               - authorizationToken
              ReauthorizeEvery: 0
 
+  userApi: 
+    Type: AWS::Serverless::Api
+    Properties:
+     StageName: !Ref EnvironmentType
+     
   userServiceFunction:
     Type: 'AWS::Serverless::Function'
     Properties:
@@ -110,11 +115,13 @@ Resources:
         userRegisterAPI:
           Type: Api
           Properties:
+            RestApiId: !Ref userApi
             Path: /user/register
             Method: POST
         userLoginAPI:
           Type: Api
           Properties:
+            RestApiId: !Ref userApi
             Path: /user/login
             Method: POST
 
