@@ -8,6 +8,9 @@ Description: >
 Globals:
   Function:
     Timeout: 30
+    Environment:
+      Variables:
+        ENVIRONMENT_NAME: !Ref EnvironmentType
 
 Parameters: 
     EnvironmentType: 
@@ -124,6 +127,7 @@ Resources:
             RestApiId: !Ref userApi
             Path: /user/login
             Method: POST
+    DependsOn: userDynamoDBTable
 
   productServiceFunction:
     Type: 'AWS::Serverless::Function'
@@ -164,3 +168,4 @@ Resources:
             RestApiId: !Ref productApi
             Path: /product
             Method: DELETE
+    DependsOn: productDynamoDBTable

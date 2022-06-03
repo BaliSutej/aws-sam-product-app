@@ -1,0 +1,5 @@
+{
+    "api-endpoints":{
+        "userapiendpoint": "https://ei8pbbl4y0.execute-api.us-east-1.amazonaws.com/test/user/"
+    }
+}

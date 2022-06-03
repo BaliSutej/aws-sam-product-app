@@ -8,6 +8,12 @@ var jwt = require('jsonwebtoken');
 
 exports.lambdaHandler = async (event, context) => {
 
+    let response;
+
+    console.log(event);
+    console.log("-------");
+    console.log(context);
+
     try {
         console.log(JSON.stringify(event));
         
@@ -41,7 +47,8 @@ const getUser = async (data) => {
     console.log("Get user with userID : " + data.userId);
 
     const params = {
-        TableName: "UserTablesvb",
+        
+        TableName: "usertable-"+ process.env.ENVIRONMENT_NAME+"-svb",
         Key: {
             userID: { S: data.userId }
         },
@@ -65,7 +72,7 @@ const getUser = async (data) => {
         }
 
     } catch (error) {
-        console.error(err);
+        console.error(error);
         return buildResponse(500, { error: "Some internal error occured" });
     }
 
@@ -75,9 +82,11 @@ const getUser = async (data) => {
 const addUser = async (data) => {
 
     console.log("Add User with data : " + JSON.stringify(data));
+    console.log(process.env);
+    console.log("------------------");
 
     const params = {
-        TableName: "UserTablesvb",
+        TableName: "usertable-"+ process.env.ENVIRONMENT_NAME+"-svb",
         Item: {
             userID: { S: data.userId },
             name: { S: data.name },

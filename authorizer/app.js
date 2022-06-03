@@ -32,7 +32,7 @@ exports.lambdaHandler = async (event, context) => {
         var decoded = jwt.verify(event.headers.authorizationToken, 'privateKey');
         console.log("Hey");
         const params = {
-            TableName: "UserTablesvb",
+            TableName: "usertable-"+ process.env.ENVIRONMENT_NAME+"-svb",
             Key: {
                 userID: { S: decoded.userId }
             },
