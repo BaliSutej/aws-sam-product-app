@@ -9,7 +9,7 @@ const addProduct = async (data) => {
 
 
     const params = {
-        TableName: "productServiceFunction-"+ process.env.ENVIRONMENT_NAME+"-svb",
+        TableName: "producttable-"+ process.env.ENVIRONMENT_NAME+"-svb",
         Item: {
             ProductID: { S: data.productId },
             ProductName: { S: data.productName },
@@ -35,7 +35,7 @@ const updateProductById = async (productId,data) => {
   
 
     const params = {
-        TableName: "productServiceFunction-"+ process.env.ENVIRONMENT_NAME+"-svb",
+        TableName: "producttable-"+ process.env.ENVIRONMENT_NAME+"-svb",
         Key: {
             ProductID: { S: productId }
         },
@@ -60,7 +60,7 @@ const deleteProductByProductId = async (productId) => {
 
     console.log("Delete product with product Id : "+ productId);
     const params = {
-        TableName: "productServiceFunction-"+ process.env.ENVIRONMENT_NAME+"-svb",
+        TableName: "producttable-"+ process.env.ENVIRONMENT_NAME+"-svb",
         Key: {
             ProductID: { S: productId }
         },
@@ -81,7 +81,7 @@ const getProductById = async (productId) => {
 
     console.log("Get product with Product ID : " + productId);
     const params = {
-        TableName: "productServiceFunction-"+ process.env.ENVIRONMENT_NAME+"-svb",
+        TableName: "producttable-"+ process.env.ENVIRONMENT_NAME+"-svb",
         Key: {
             ProductID: { S: productId },
         },
