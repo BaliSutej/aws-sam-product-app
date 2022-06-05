@@ -71,7 +71,7 @@ const updateProductById = async (productId, data) => {
         //   }
 
         let updatedItem = {
-            "productID": data.Attributes.ProductID.S ,
+            "productId": data.Attributes.ProductID.S ,
             "productName": data.Attributes.ProductName.S ,
             "price": data.Attributes.Price.N,
             "category": data.Attributes.Category.S ,
