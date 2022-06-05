@@ -127,6 +127,12 @@ Resources:
             RestApiId: !Ref userApi
             Path: /user/login
             Method: POST
+        userDeleteAPI:
+          Type: Api
+          Properties:
+            RestApiId: !Ref userApi
+            Path: /user/delete
+            Method: DELETE
     DependsOn: userDynamoDBTable
 
   productServiceFunction:

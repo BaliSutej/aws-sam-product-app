@@ -10,19 +10,19 @@ exports.lambdaHandler = async (event, context) => {
 
     let response;
 
-    console.log(event);
-    console.log("-------");
-    console.log(context);
-
     try {
         console.log(JSON.stringify(event));
-        
+
         if (event.path === "/user/register/" || event.path === "/user/register") {
             return addUser(JSON.parse(event.body));
         }
 
         if (event.path === "/user/login/" || event.path === "/user/login") {
             return getUser(JSON.parse(event.body));
+        }
+
+        if (event.path === "/user/delete/" || event.path === "/user/delete") {
+            return deleteUser(JSON.parse(event.body));
         }
 
         console.log(JSON.stringify(event));
@@ -41,14 +41,52 @@ exports.lambdaHandler = async (event, context) => {
 
 };
 
+const deleteUser = async (data) => {
+
+    try {
+        const getUserParams = {
+            TableName: "usertable-" + process.env.ENVIRONMENT_NAME + "-svb",
+            Key: {
+                userID: { S: data.userId }
+            },
+        };
+
+        const res = await ddbClient.send(new GetItemCommand(getUserParams));
+        if (res["Item"]) {
+            if (res["Item"]["password"]["S"] === data.password) {
+                console.log("Delete user with product Id : " + data.userId);
+                const params = {
+                    TableName: "usertable-" + process.env.ENVIRONMENT_NAME + "-svb",
+                    Key: {
+                        userID: { S: data.userId }
+                    },
+                };
+
+                const data = await ddbClient.send(new DeleteItemCommand(params));
+                return buildResponse(200, { message: "User Successfully deleted" });
+
+            } else {
+                return buildResponse(400, { "error": "Invalid Username or Password" });
+            }
+        } else {
+            return buildResponse(400, { "error": "Invalid Username or Password" });
+        }
+
+    } catch (error) {
+        console.error(error);
+        return buildResponse(500, { error: "Some internal error occured" });
+    }
+
+}
+
 
 const getUser = async (data) => {
 
     console.log("Get user with userID : " + data.userId);
 
     const params = {
-        
-        TableName: "usertable-"+ process.env.ENVIRONMENT_NAME+"-svb",
+
+        TableName: "usertable-" + process.env.ENVIRONMENT_NAME + "-svb",
         Key: {
             userID: { S: data.userId }
         },
@@ -57,18 +95,18 @@ const getUser = async (data) => {
     try {
         const res = await ddbClient.send(new GetItemCommand(params));
         console.log(res);
-        
+
         if (res["Item"]) {
-            if(res["Item"]["password"]["S"] === data.password){
+            if (res["Item"]["password"]["S"] === data.password) {
                 console.log("In In");
                 var token = jwt.sign({ userId: data.userId }, "privateKey");
                 console.log(token);
                 return buildResponse(200, { "token": token });
-            }else{
-                return buildResponse(400,{"error":"Invalid Username or Password"});
+            } else {
+                return buildResponse(400, { "error": "Invalid Username or Password" });
             }
-        }else{
-            return buildResponse(400,{"error":"Invalid Username or Password"});
+        } else {
+            return buildResponse(400, { "error": "Invalid Username or Password" });
         }
 
     } catch (error) {
@@ -86,7 +124,7 @@ const addUser = async (data) => {
     console.log("------------------");
 
     const params = {
-        TableName: "usertable-"+ process.env.ENVIRONMENT_NAME+"-svb",
+        TableName: "usertable-" + process.env.ENVIRONMENT_NAME + "-svb",
         Item: {
             userID: { S: data.userId },
             name: { S: data.name },
