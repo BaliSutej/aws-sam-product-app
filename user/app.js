@@ -54,7 +54,7 @@ const deleteUser = async (data) => {
         const res = await ddbClient.send(new GetItemCommand(getUserParams));
         if (res["Item"]) {
             if (res["Item"]["password"]["S"] === data.password) {
-                console.log("Delete user with product Id : " + data.userId);
+                console.log("Delete user with userId : " + data.userId);
                 const params = {
                     TableName: "usertable-" + process.env.ENVIRONMENT_NAME + "-svb",
                     Key: {
@@ -62,7 +62,7 @@ const deleteUser = async (data) => {
                     },
                 };
 
-                const data = await ddbClient.send(new DeleteItemCommand(params));
+                const userdata = await ddbClient.send(new DeleteItemCommand(params));
                 return buildResponse(200, { message: "User Successfully deleted" });
 
             } else {
