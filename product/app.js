@@ -39,7 +39,7 @@ const updateProductById = async (productId, data) => {
         Key: {
             ProductID: { S: productId }
         },
-        UpdateExpression: "set price = :t",
+        UpdateExpression: "set Price = :t",
         ExpressionAttributeValues: {
             ":t": { N: data.price }
         },
@@ -50,11 +50,11 @@ const updateProductById = async (productId, data) => {
         const data = await ddbClient.send(new UpdateItemCommand(params));
         console.log(data);
         let updatedItem = {
-            ProductID: { S: data.Attributes.productId },
-            ProductName: { S: data.Attributes.productName },
-            Price: { N: data.Attributes.price },
-            Category: { S: data.Attributes.category },
-            Inventory: { N: data.Attributes.inventory }
+            ProductID: data.Attributes.productId ,
+            ProductName: data.Attributes.productName ,
+            Price: data.Attributes.price.N,
+            Category: data.Attributes.category ,
+            Inventory: data.Attributes.inventory
         }
         return buildResponse(200, updatedItem);
     } catch (err) {
@@ -98,11 +98,11 @@ const getProductById = async (productId) => {
         const data = await ddbClient.send(new GetItemCommand(params));
         console.log("Success", data.Item);
         let item = {
-            "ProductID": data.Item.S,
-            "Inventory": data.Item.N,
-            "Price": data.Item.N,
-            "Category": data.Item.S,
-            "ProductName": data.Item.S
+            "ProductID": data.Item.ProductID.S,
+            "Inventory": data.Item.Inventory.N,
+            "Price": data.Item.Price.N,
+            "Category": data.Item.Category.S,
+            "ProductName": data.Item.ProductName.S
         }
         return buildResponse(200, item);
     } catch (error) {
