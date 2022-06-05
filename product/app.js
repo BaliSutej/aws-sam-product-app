@@ -50,11 +50,11 @@ const updateProductById = async (productId, data) => {
         const data = await ddbClient.send(new UpdateItemCommand(params));
         console.log(data);
         let updatedItem = {
-            ProductID: data.Attributes.productId.S ,
-            ProductName: data.Attributes.productName.S ,
-            Price: data.Attributes.price.N,
-            Category: data.Attributes.category.S ,
-            Inventory: data.Attributes.inventory.N
+            "productID": data.Attributes.ProductId.S ,
+            "productName": data.Attributes.ProductName.S ,
+            "price": data.Attributes.Price.N,
+            "category": data.Attributes.Category.S ,
+            "inventory": data.Attributes.Inventory.N
         }
         return buildResponse(200, updatedItem);
     } catch (err) {
@@ -98,11 +98,11 @@ const getProductById = async (productId) => {
         const data = await ddbClient.send(new GetItemCommand(params));
         console.log("Success", data.Item);
         let item = {
-            "ProductID": data.Item.ProductID.S,
-            "Inventory": data.Item.Inventory.N,
-            "Price": data.Item.Price.N,
-            "Category": data.Item.Category.S,
-            "ProductName": data.Item.ProductName.S
+            "productID": data.Item.ProductID.S,
+            "inventory": data.Item.Inventory.N,
+            "price": data.Item.Price.N,
+            "category": data.Item.Category.S,
+            "productName": data.Item.ProductName.S
         }
         return buildResponse(200, item);
     } catch (error) {
