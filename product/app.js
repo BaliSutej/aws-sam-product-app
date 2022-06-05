@@ -49,8 +49,29 @@ const updateProductById = async (productId, data) => {
     try {
         const data = await ddbClient.send(new UpdateItemCommand(params));
         console.log(data);
+
+        // {
+        //     '$metadata': {
+        //       httpStatusCode: 200,
+        //       requestId: '7J0MJENSLQVJCHPN8D76CT0HUJVV4KQNSO5AEMVJF66Q9ASUAAJG',
+        //       extendedRequestId: undefined,
+        //       cfId: undefined,
+        //       attempts: 1,
+        //       totalRetryDelay: 0
+        //     },
+        //     Attributes: {
+        //       Inventory: { N: '100' },
+        //       ProductID: { S: 'prod1234' },
+        //       Price: { N: '15' },
+        //       Category: { S: 'food' },
+        //       ProductName: { S: 'nestle munch' }
+        //     },
+        //     ConsumedCapacity: undefined,
+        //     ItemCollectionMetrics: undefined
+        //   }
+
         let updatedItem = {
-            "productID": data.Attributes.ProductId.S ,
+            "productID": data.Attributes.ProductID.S ,
             "productName": data.Attributes.ProductName.S ,
             "price": data.Attributes.Price.N,
             "category": data.Attributes.Category.S ,
@@ -98,7 +119,7 @@ const getProductById = async (productId) => {
         const data = await ddbClient.send(new GetItemCommand(params));
         console.log("Success", data.Item);
         let item = {
-            "productID": data.Item.ProductID.S,
+            "productId": data.Item.ProductID.S,
             "inventory": data.Item.Inventory.N,
             "price": data.Item.Price.N,
             "category": data.Item.Category.S,
