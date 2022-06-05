@@ -50,11 +50,11 @@ const updateProductById = async (productId, data) => {
         const data = await ddbClient.send(new UpdateItemCommand(params));
         console.log(data);
         let updatedItem = {
-            ProductID: data.Attributes.productId ,
-            ProductName: data.Attributes.productName ,
+            ProductID: data.Attributes.productId.S ,
+            ProductName: data.Attributes.productName.S ,
             Price: data.Attributes.price.N,
-            Category: data.Attributes.category ,
-            Inventory: data.Attributes.inventory
+            Category: data.Attributes.category.S ,
+            Inventory: data.Attributes.inventory.N
         }
         return buildResponse(200, updatedItem);
     } catch (err) {
