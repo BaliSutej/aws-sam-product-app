@@ -27,10 +27,10 @@ const addProduct = async (data) => {
     try {
         let data = await getProductFromDb(paramsForGet);
         if (data.Item === undefined) {
-            return buildResponse(400, { error: "Product with specified ID not present" });
-        } else {
             data = await addProductToDb(params);
             return buildResponse(200, { "message": "Product successfully added" });
+        } else {
+            return buildResponse(400, { error: "Product with specified ID not present" });
         }
     } catch (err) {
         console.error(err);
