@@ -1,0 +1,22 @@
+{
+  "name": "product-sam-app-svb",
+  "version": "1.0.0",
+  "description": "This project contains source code and supporting files for a serverless application that you can deploy with the SAM CLI. It includes the following files and folders.",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest tests/unit"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/BaliSutej/aws-sam-product-app.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/BaliSutej/aws-sam-product-app/issues"
+  },
+  "homepage": "https://github.com/BaliSutej/aws-sam-product-app#readme",
+  "dependencies": {
+    "jest": "^28.1.1"
+  }
+}

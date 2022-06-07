@@ -1,6 +1,6 @@
 
 const { ddbClient } = require("./libs/ddbClient");
-
+const { addUserToDb, getUserFromDb, deleteUserFromDb } = require("./src/user.service");
 const { PutItemCommand, DeleteItemCommand, GetItemCommand } = require("@aws-sdk/client-dynamodb");
 var jwt = require('jsonwebtoken');
 
@@ -51,7 +51,7 @@ const deleteUser = async (data) => {
             },
         };
 
-        const res = await ddbClient.send(new GetItemCommand(getUserParams));
+        const res = await getUserFromDb(getUserParams);
         if (res["Item"]) {
             if (res["Item"]["password"]["S"] === data.password) {
                 console.log("Delete user with userId : " + data.userId);
@@ -62,7 +62,7 @@ const deleteUser = async (data) => {
                     },
                 };
 
-                const userdata = await ddbClient.send(new DeleteItemCommand(params));
+                const userdata = await deleteUserFromDb(params);
                 return buildResponse(200, { message: "User Successfully deleted" });
 
             } else {
@@ -93,14 +93,12 @@ const getUser = async (data) => {
     };
 
     try {
-        const res = await ddbClient.send(new GetItemCommand(params));
+        const res = await getUserFromDb(params);
         console.log(res);
 
         if (res["Item"]) {
             if (res["Item"]["password"]["S"] === data.password) {
-                console.log("In In");
                 var token = jwt.sign({ userId: data.userId }, "privateKey");
-                console.log(token);
                 return buildResponse(200, { "token": token });
             } else {
                 return buildResponse(400, { "error": "Invalid Username or Password" });
@@ -110,7 +108,7 @@ const getUser = async (data) => {
         }
 
     } catch (error) {
-        console.error(error);
+        console.log(error);
         return buildResponse(500, { error: "Some internal error occured" });
     }
 
@@ -120,9 +118,14 @@ const getUser = async (data) => {
 const addUser = async (data) => {
 
     console.log("Add User with data : " + JSON.stringify(data));
-    console.log(process.env);
-    console.log("------------------");
 
+    const getUserParams = {
+        TableName: "usertable-" + process.env.ENVIRONMENT_NAME + "-svb",
+        Key: {
+            userID: { S: data.userId }
+        }
+    }
+    
     const params = {
         TableName: "usertable-" + process.env.ENVIRONMENT_NAME + "-svb",
         Item: {
@@ -133,11 +136,14 @@ const addUser = async (data) => {
     };
 
     try {
-        const data = await ddbClient.send(new PutItemCommand(params));
-        console.log(data);
-        return buildResponse(200, { "message": "user successfully added" });
+        let data = await getUserFromDb(getUserParams);
+        if (data.Item === undefined) {
+            data = await addUserToDb(params);
+            return buildResponse(200, { "message": "user successfully added" });
+        }
+        return buildResponse(400, { error: "User already present in DB" });
     } catch (err) {
-        console.error(err);
+        console.log(err);
         return buildResponse(500, { error: "Some internal error occured" });
     }
 

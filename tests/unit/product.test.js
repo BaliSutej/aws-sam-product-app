@@ -1,7 +1,7 @@
 
-const app = require('../app.js');
+const app = require('../../user/app.js');
 var event, context;
-jest.mock('../src/product.service.js')
+jest.mock('../../user/')
 
 describe('Product lambda unit tests', () => {
     const env = process.env;
