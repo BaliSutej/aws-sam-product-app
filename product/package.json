@@ -8,10 +8,11 @@
   "license": "MIT",
   "dependencies": {
     "@aws-sdk/client-dynamodb": "^3.95.0",
-    "axios": ">=0.21.1"
+    "axios": ">=0.21.1",
+    "jest": "^28.1.0"
   },
   "scripts": {
-    "test": "mocha tests/unit/"
+    "test": "jest tests/"
   },
   "devDependencies": {
     "chai": "^4.2.0",

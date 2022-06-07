@@ -1,0 +1,123 @@
+{
+    "resource": "/product",
+    "path": "/product",
+    "httpMethod": "PUT",
+    "headers": {
+        "Accept": "application/json, text/plain, */*",
+        "authorizationToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJzdmJAZ21haWwuY29tIiwiaWF0IjoxNjU0NDU3NzA2fQ.wixrE7nOVt37bzNWoOqRrCzprsooTVAfILlJVP9CmQk",
+        "CloudFront-Forwarded-Proto": "https",
+        "CloudFront-Is-Desktop-Viewer": "true",
+        "CloudFront-Is-Mobile-Viewer": "false",
+        "CloudFront-Is-SmartTV-Viewer": "false",
+        "CloudFront-Is-Tablet-Viewer": "false",
+        "CloudFront-Viewer-Country": "US",
+        "Content-Type": "application/json",
+        "Host": "1l6ie35cm4.execute-api.us-east-1.amazonaws.com",
+        "User-Agent": "axios/0.27.2",
+        "Via": "1.1 c5bb940b2890383b4ca2d8b74b68699a.cloudfront.net (CloudFront)",
+        "X-Amz-Cf-Id": "qWX4aC4fzBs-TQrEj43yC--xFRKUV2wGJuRR2AJ0hSsu_AdJfdlJ7w==",
+        "X-Amzn-Trace-Id": "Root=1-629d056c-4ea38925108d4fc10340a1fd",
+        "X-Forwarded-For": "34.228.4.211, 70.132.60.70",
+        "X-Forwarded-Port": "443",
+        "X-Forwarded-Proto": "https"
+    },
+    "multiValueHeaders": {
+        "Accept": [
+            "application/json, text/plain, */*"
+        ],
+        "authorizationToken": [
+            "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJzdmJAZ21haWwuY29tIiwiaWF0IjoxNjU0NDU3NzA2fQ.wixrE7nOVt37bzNWoOqRrCzprsooTVAfILlJVP9CmQk"
+        ],
+        "CloudFront-Forwarded-Proto": [
+            "https"
+        ],
+        "CloudFront-Is-Desktop-Viewer": [
+            "true"
+        ],
+        "CloudFront-Is-Mobile-Viewer": [
+            "false"
+        ],
+        "CloudFront-Is-SmartTV-Viewer": [
+            "false"
+        ],
+        "CloudFront-Is-Tablet-Viewer": [
+            "false"
+        ],
+        "CloudFront-Viewer-Country": [
+            "US"
+        ],
+        "Content-Type": [
+            "application/json"
+        ],
+        "Host": [
+            "1l6ie35cm4.execute-api.us-east-1.amazonaws.com"
+        ],
+        "User-Agent": [
+            "axios/0.27.2"
+        ],
+        "Via": [
+            "1.1 c5bb940b2890383b4ca2d8b74b68699a.cloudfront.net (CloudFront)"
+        ],
+        "X-Amz-Cf-Id": [
+            "qWX4aC4fzBs-TQrEj43yC--xFRKUV2wGJuRR2AJ0hSsu_AdJfdlJ7w=="
+        ],
+        "X-Amzn-Trace-Id": [
+            "Root=1-629d056c-4ea38925108d4fc10340a1fd"
+        ],
+        "X-Forwarded-For": [
+            "34.228.4.211, 70.132.60.70"
+        ],
+        "X-Forwarded-Port": [
+            "443"
+        ],
+        "X-Forwarded-Proto": [
+            "https"
+        ]
+    },
+    "queryStringParameters": {
+        "productId": "prod1234"
+    },
+    "multiValueQueryStringParameters": {
+        "productId": [
+            "prod1234"
+        ]
+    },
+    "pathParameters": null,
+    "stageVariables": null,
+    "requestContext": {
+        "resourceId": "32p9fu",
+        "authorizer": {
+            "principalId": "user",
+            "integrationLatency": 33
+        },
+        "resourcePath": "/product",
+        "httpMethod": "PUT",
+        "extendedRequestId": "TQ3JAEjeIAMFT6Q=",
+        "requestTime": "05/Jun/2022:19:35:08 +0000",
+        "path": "/test/product",
+        "accountId": "960351580303",
+        "protocol": "HTTP/1.1",
+        "stage": "test",
+        "domainPrefix": "1l6ie35cm4",
+        "requestTimeEpoch": 1654457708610,
+        "requestId": "77eea458-f982-450c-ad68-d7c3d6db5ae0",
+        "identity": {
+            "cognitoIdentityPoolId": null,
+            "accountId": null,
+            "cognitoIdentityId": null,
+            "caller": null,
+            "sourceIp": "34.228.4.211",
+            "principalOrgId": null,
+            "accessKey": null,
+            "cognitoAuthenticationType": null,
+            "cognitoAuthenticationProvider": null,
+            "userArn": null,
+            "userAgent": "axios/0.27.2",
+            "user": null
+        },
+        "domainName": "1l6ie35cm4.execute-api.us-east-1.amazonaws.com",
+        "apiId": "1l6ie35cm4"
+    },
+    "body": "{\"price\":\"15\"}",
+    "isBase64Encoded": false
+}

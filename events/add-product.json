@@ -1,0 +1,117 @@
+{
+    "resource": "/product",
+    "path": "/product",
+    "httpMethod": "POST",
+    "headers": {
+        "Accept": "application/json, text/plain, */*",
+        "authorizationToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJzdmJAZ21haWwuY29tIiwiaWF0IjoxNjU0NDU3NzA2fQ.wixrE7nOVt37bzNWoOqRrCzprsooTVAfILlJVP9CmQk",
+        "CloudFront-Forwarded-Proto": "https",
+        "CloudFront-Is-Desktop-Viewer": "true",
+        "CloudFront-Is-Mobile-Viewer": "false",
+        "CloudFront-Is-SmartTV-Viewer": "false",
+        "CloudFront-Is-Tablet-Viewer": "false",
+        "CloudFront-Viewer-Country": "US",
+        "Content-Type": "application/json",
+        "Host": "1l6ie35cm4.execute-api.us-east-1.amazonaws.com",
+        "User-Agent": "axios/0.27.2",
+        "Via": "1.1 c242c974a465288488c7876cabca7752.cloudfront.net (CloudFront)",
+        "X-Amz-Cf-Id": "QjsBj0nvSPTzqz50A16-NqnhkXAofK7yHR_o5Ne1-NMuV4LcR60NVQ==",
+        "X-Amzn-Trace-Id": "Root=1-629d056a-1328f1593300adda77772185",
+        "X-Forwarded-For": "34.228.4.211, 70.132.60.143",
+        "X-Forwarded-Port": "443",
+        "X-Forwarded-Proto": "https"
+    },
+    "multiValueHeaders": {
+        "Accept": [
+            "application/json, text/plain, */*"
+        ],
+        "authorizationToken": [
+            "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJzdmJAZ21haWwuY29tIiwiaWF0IjoxNjU0NDU3NzA2fQ.wixrE7nOVt37bzNWoOqRrCzprsooTVAfILlJVP9CmQk"
+        ],
+        "CloudFront-Forwarded-Proto": [
+            "https"
+        ],
+        "CloudFront-Is-Desktop-Viewer": [
+            "true"
+        ],
+        "CloudFront-Is-Mobile-Viewer": [
+            "false"
+        ],
+        "CloudFront-Is-SmartTV-Viewer": [
+            "false"
+        ],
+        "CloudFront-Is-Tablet-Viewer": [
+            "false"
+        ],
+        "CloudFront-Viewer-Country": [
+            "US"
+        ],
+        "Content-Type": [
+            "application/json"
+        ],
+        "Host": [
+            "1l6ie35cm4.execute-api.us-east-1.amazonaws.com"
+        ],
+        "User-Agent": [
+            "axios/0.27.2"
+        ],
+        "Via": [
+            "1.1 c242c974a465288488c7876cabca7752.cloudfront.net (CloudFront)"
+        ],
+        "X-Amz-Cf-Id": [
+            "QjsBj0nvSPTzqz50A16-NqnhkXAofK7yHR_o5Ne1-NMuV4LcR60NVQ=="
+        ],
+        "X-Amzn-Trace-Id": [
+            "Root=1-629d056a-1328f1593300adda77772185"
+        ],
+        "X-Forwarded-For": [
+            "34.228.4.211, 70.132.60.143"
+        ],
+        "X-Forwarded-Port": [
+            "443"
+        ],
+        "X-Forwarded-Proto": [
+            "https"
+        ]
+    },
+    "queryStringParameters": null,
+    "multiValueQueryStringParameters": null,
+    "pathParameters": null,
+    "stageVariables": null,
+    "requestContext": {
+        "resourceId": "32p9fu",
+        "authorizer": {
+            "principalId": "user",
+            "integrationLatency": 1264
+        },
+        "resourcePath": "/product",
+        "httpMethod": "POST",
+        "extendedRequestId": "TQ3ImFD0oAMF1KQ=",
+        "requestTime": "05/Jun/2022:19:35:06 +0000",
+        "path": "/test/product",
+        "accountId": "960351580303",
+        "protocol": "HTTP/1.1",
+        "stage": "test",
+        "domainPrefix": "1l6ie35cm4",
+        "requestTimeEpoch": 1654457706077,
+        "requestId": "40cc6462-6fe5-4090-aa66-f6a997706e8f",
+        "identity": {
+            "cognitoIdentityPoolId": null,
+            "accountId": null,
+            "cognitoIdentityId": null,
+            "caller": null,
+            "sourceIp": "34.228.4.211",
+            "principalOrgId": null,
+            "accessKey": null,
+            "cognitoAuthenticationType": null,
+            "cognitoAuthenticationProvider": null,
+            "userArn": null,
+            "userAgent": "axios/0.27.2",
+            "user": null
+        },
+        "domainName": "1l6ie35cm4.execute-api.us-east-1.amazonaws.com",
+        "apiId": "1l6ie35cm4"
+    },
+    "body": "{\"productId\":\"prod1234\",\"productName\":\"nestle munch\",\"price\":\"10\",\"category\":\"food\",\"inventory\":\"100\"}",
+    "isBase64Encoded": false
+}

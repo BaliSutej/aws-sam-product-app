@@ -1,12 +1,10 @@
 const { ddbClient } = require("./libs/ddbClient");
 
-const { PutItemCommand, DeleteItemCommand, UpdateItemCommand, GetItemCommand } = require("@aws-sdk/client-dynamodb");
-
+const { addProductToDb, updateProductToDb, deleteProductFromDb, getProductFromDb } = require("./src/product.service");
 
 const addProduct = async (data) => {
 
     console.log("Add product with data : " + JSON.stringify(data));
-
 
     const params = {
         TableName: "producttable-" + process.env.ENVIRONMENT_NAME + "-svb",
@@ -19,9 +17,21 @@ const addProduct = async (data) => {
         },
     };
 
+    const paramsForGet = {
+        TableName: "producttable-" + process.env.ENVIRONMENT_NAME + "-svb",
+        Key: {
+            ProductID: { S: data.productId },
+        },
+    };
+
     try {
-        const data = await ddbClient.send(new PutItemCommand(params));
-        return buildResponse(200, { "message": "Product successfully added" });
+        let data = await getProductFromDb(paramsForGet);
+        if (data.Item === undefined) {
+            return buildResponse(400, { error: "Product with specified ID not present" });
+        } else {
+            data = await addProductToDb(params);
+            return buildResponse(200, { "message": "Product successfully added" });
+        }
     } catch (err) {
         console.error(err);
         return buildResponse(500, { error: "Some internal error occured" });
@@ -33,6 +43,12 @@ const updateProductById = async (productId, data) => {
 
     console.log("Update product with product Id : " + productId + " with new data : " + data.price);
 
+    const paramsForGet = {
+        TableName: "producttable-" + process.env.ENVIRONMENT_NAME + "-svb",
+        Key: {
+            ProductID: { S: productId },
+        },
+    };
 
     const params = {
         TableName: "producttable-" + process.env.ENVIRONMENT_NAME + "-svb",
@@ -47,39 +63,23 @@ const updateProductById = async (productId, data) => {
     };
 
     try {
-        const data = await ddbClient.send(new UpdateItemCommand(params));
-        console.log(data);
+        let data = await getProductFromDb(paramsForGet);
+        if (data.Item === undefined) {
+            return buildResponse(400, { error: "Product with specified ID not present" });
+        } else {
+            data = await updateProductToDb(params);
 
-        // {
-        //     '$metadata': {
-        //       httpStatusCode: 200,
-        //       requestId: '7J0MJENSLQVJCHPN8D76CT0HUJVV4KQNSO5AEMVJF66Q9ASUAAJG',
-        //       extendedRequestId: undefined,
-        //       cfId: undefined,
-        //       attempts: 1,
-        //       totalRetryDelay: 0
-        //     },
-        //     Attributes: {
-        //       Inventory: { N: '100' },
-        //       ProductID: { S: 'prod1234' },
-        //       Price: { N: '15' },
-        //       Category: { S: 'food' },
-        //       ProductName: { S: 'nestle munch' }
-        //     },
-        //     ConsumedCapacity: undefined,
-        //     ItemCollectionMetrics: undefined
-        //   }
-
-        let updatedItem = {
-            "productId": data.Attributes.ProductID.S ,
-            "productName": data.Attributes.ProductName.S ,
-            "price": data.Attributes.Price.N,
-            "category": data.Attributes.Category.S ,
-            "inventory": data.Attributes.Inventory.N
+            let updatedItem = {
+                "productId": data.Attributes.ProductID.S,
+                "productName": data.Attributes.ProductName.S,
+                "price": data.Attributes.Price.N,
+                "category": data.Attributes.Category.S,
+                "inventory": data.Attributes.Inventory.N
+            }
+            return buildResponse(200, updatedItem); ß
         }
-        return buildResponse(200, updatedItem);
     } catch (err) {
-        console.error(err);
+        console.log(err);
         return buildResponse(500, { error: "Some Internal Error" });
     }
 }
@@ -95,7 +95,7 @@ const deleteProductByProductId = async (productId) => {
     };
 
     try {
-        const data = await ddbClient.send(new DeleteItemCommand(params));
+        const data = await deleteProductFromDb(params);
         console.log("Success, item deleted", data);
         return buildResponse(200, { message: "Product Successfully deleted" });
     } catch (err) {
@@ -116,8 +116,10 @@ const getProductById = async (productId) => {
     };
 
     try {
-        const data = await ddbClient.send(new GetItemCommand(params));
-        console.log("Success", data.Item);
+        const data = await getProductFromDb(params);
+        if (data.Item === undefined) {
+            return buildResponse(400, { error: "Product with specified ID not present" });
+        }
         let item = {
             "productId": data.Item.ProductID.S,
             "inventory": data.Item.Inventory.N,
@@ -127,7 +129,7 @@ const getProductById = async (productId) => {
         }
         return buildResponse(200, item);
     } catch (error) {
-        console.error(err);
+        console.log(error);
         return buildResponse(400, { error: "Some internal error occured" });
     }
 

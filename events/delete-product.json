@@ -1,0 +1,119 @@
+{
+    "resource": "/product",
+    "path": "/product",
+    "httpMethod": "DELETE",
+    "headers": {
+        "Accept": "application/json, text/plain, */*",
+        "authorizationToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJzdmJAZ21haWwuY29tIiwiaWF0IjoxNjU0NDU3NzA2fQ.wixrE7nOVt37bzNWoOqRrCzprsooTVAfILlJVP9CmQk",
+        "CloudFront-Forwarded-Proto": "https",
+        "CloudFront-Is-Desktop-Viewer": "true",
+        "CloudFront-Is-Mobile-Viewer": "false",
+        "CloudFront-Is-SmartTV-Viewer": "false",
+        "CloudFront-Is-Tablet-Viewer": "false",
+        "CloudFront-Viewer-Country": "US",
+        "Host": "1l6ie35cm4.execute-api.us-east-1.amazonaws.com",
+        "User-Agent": "axios/0.27.2",
+        "Via": "1.1 aa0ac259128059e949248e63a3b6767e.cloudfront.net (CloudFront)",
+        "X-Amz-Cf-Id": "vh2zE04iLCWgXnJwiq18IPnqOVZawfCRCqWIRsiftplFZPcy0e552w==",
+        "X-Amzn-Trace-Id": "Root=1-629d056c-32aaf90a39dcbe952a01dac8",
+        "X-Forwarded-For": "34.228.4.211, 70.132.60.85",
+        "X-Forwarded-Port": "443",
+        "X-Forwarded-Proto": "https"
+    },
+    "multiValueHeaders": {
+        "Accept": [
+            "application/json, text/plain, */*"
+        ],
+        "authorizationToken": [
+            "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJzdmJAZ21haWwuY29tIiwiaWF0IjoxNjU0NDU3NzA2fQ.wixrE7nOVt37bzNWoOqRrCzprsooTVAfILlJVP9CmQk"
+        ],
+        "CloudFront-Forwarded-Proto": [
+            "https"
+        ],
+        "CloudFront-Is-Desktop-Viewer": [
+            "true"
+        ],
+        "CloudFront-Is-Mobile-Viewer": [
+            "false"
+        ],
+        "CloudFront-Is-SmartTV-Viewer": [
+            "false"
+        ],
+        "CloudFront-Is-Tablet-Viewer": [
+            "false"
+        ],
+        "CloudFront-Viewer-Country": [
+            "US"
+        ],
+        "Host": [
+            "1l6ie35cm4.execute-api.us-east-1.amazonaws.com"
+        ],
+        "User-Agent": [
+            "axios/0.27.2"
+        ],
+        "Via": [
+            "1.1 aa0ac259128059e949248e63a3b6767e.cloudfront.net (CloudFront)"
+        ],
+        "X-Amz-Cf-Id": [
+            "vh2zE04iLCWgXnJwiq18IPnqOVZawfCRCqWIRsiftplFZPcy0e552w=="
+        ],
+        "X-Amzn-Trace-Id": [
+            "Root=1-629d056c-32aaf90a39dcbe952a01dac8"
+        ],
+        "X-Forwarded-For": [
+            "34.228.4.211, 70.132.60.85"
+        ],
+        "X-Forwarded-Port": [
+            "443"
+        ],
+        "X-Forwarded-Proto": [
+            "https"
+        ]
+    },
+    "queryStringParameters": {
+        "productId": "prod1234"
+    },
+    "multiValueQueryStringParameters": {
+        "productId": [
+            "prod1234"
+        ]
+    },
+    "pathParameters": null,
+    "stageVariables": null,
+    "requestContext": {
+        "resourceId": "32p9fu",
+        "authorizer": {
+            "principalId": "user",
+            "integrationLatency": 24
+        },
+        "resourcePath": "/product",
+        "httpMethod": "DELETE",
+        "extendedRequestId": "TQ3JBGVaoAMFdmw=",
+        "requestTime": "05/Jun/2022:19:35:08 +0000",
+        "path": "/test/product",
+        "accountId": "960351580303",
+        "protocol": "HTTP/1.1",
+        "stage": "test",
+        "domainPrefix": "1l6ie35cm4",
+        "requestTimeEpoch": 1654457708738,
+        "requestId": "1beaa235-fa51-4d34-820c-1b25f1af29ea",
+        "identity": {
+            "cognitoIdentityPoolId": null,
+            "accountId": null,
+            "cognitoIdentityId": null,
+            "caller": null,
+            "sourceIp": "34.228.4.211",
+            "principalOrgId": null,
+            "accessKey": null,
+            "cognitoAuthenticationType": null,
+            "cognitoAuthenticationProvider": null,
+            "userArn": null,
+            "userAgent": "axios/0.27.2",
+            "user": null
+        },
+        "domainName": "1l6ie35cm4.execute-api.us-east-1.amazonaws.com",
+        "apiId": "1l6ie35cm4"
+    },
+    "body": null,
+    "isBase64Encoded": false
+}
