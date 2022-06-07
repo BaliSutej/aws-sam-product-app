@@ -1,7 +1,7 @@
 
 const { ddbClient } = require("./libs/ddbClient");
 
-const { PutItemCommand, DeleteItemCommand, UpdateItemCommand, GetItemCommand } = require("@aws-sdk/client-dynamodb");
+const { PutItemCommand, DeleteItemCommand, GetItemCommand } = require("@aws-sdk/client-dynamodb");
 var jwt = require('jsonwebtoken');
 
 
